@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sohanur Rahman — Freelancer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #FAFAF7;
+    --paper: #FFFFFF;
+    --ink: #1F2937;
+    --ink-soft: #5B6472;
+    --teal: #2A6F77;
+    --amber: #C98A3B;
+    --line: #D8D5CC;
+    --shadow: rgba(31,41,55,0.08);
+  }
+  *{ box-sizing: border-box; margin:0; padding:0; }
+  html{ scroll-behavior: smooth; }
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'IBM Plex Sans', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a{ color: inherit; }
+  .mono{ font-family: 'IBM Plex Mono', monospace; }
+  .wrap{ max-width: 980px; margin: 0 auto; padding: 0 28px; }
+
+  /* ---------- Header ---------- */
+  header{
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+    position: sticky; top: 0; z-index: 50;
+  }
+  .header-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 18px 0;
+  }
+  .brand{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700; font-size: 1.15rem; letter-spacing:-0.01em;
+  }
+  .status-stamp{
+    display:flex; align-items:center; gap:8px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--teal); border: 1px solid var(--teal);
+    padding: 5px 10px; border-radius: 3px;
+  }
+  .status-dot{
+    width:7px; height:7px; border-radius:50%; background: var(--teal);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ opacity:1; } 50%{ opacity: 0.35; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .status-dot{ animation: none; }
+  }
+
+  /* ---------- Hero: work-order ticket ---------- */
+  .hero{ padding: 64px 0 40px; }
+  .ticket{
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    box-shadow: 0 12px 30px -18px var(--shadow);
+    overflow: hidden;
+  }
+  .ticket-head{
+    display:flex; justify-content:space-between; align-items:center;
+    padding: 14px 26px;
+    background: repeating-linear-gradient(135deg, var(--ink) 0 2px, transparent 2px 10px);
+    background-color: var(--ink);
+  }
+  .ticket-head span{
+    font-family:'IBM Plex Mono', monospace;
+    color: #F4F2EC; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .ticket-body{ padding: 40px 26px 34px; }
+  .field-row{
+    display:flex; gap: 10px; align-items:baseline;
+    font-family:'IBM Plex Mono', monospace; font-size: 0.78rem;
+    color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.06em;
+    margin-bottom: 6px;
+  }
+  .field-row b{ color: var(--teal); }
+  h1{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.1rem, 5vw, 3.3rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin: 10px 0 18px;
+  }
+  h1 em{ font-style: normal; color: var(--teal); }
+  .hero-sub{
+    max-width: 560px;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+    margin-bottom: 28px;
+  }
+  .cta-row{ display:flex; flex-wrap:wrap; gap: 14px; }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding: 12px 22px; border-radius: 4px;
+    font-weight: 600; font-size: 0.95rem;
+    text-decoration:none; transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary{ background: var(--teal); color: #fff; }
+  .btn-primary:hover{ transform: translateY(-2px); box-shadow: 0 10px 20px -10px var(--teal); }
+  .btn-ghost{ border: 1px solid var(--line); color: var(--ink); }
+  .btn-ghost:hover{ border-color: var(--ink); }
+
+  /* ---------- About ---------- */
+  section{ padding: 56px 0; }
+  .section-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--amber); margin-bottom: 10px;
+  }
+  .section-title{
+    font-family:'Space Grotesk', sans-serif; font-weight:700;
+    font-size: 1.7rem; margin-bottom: 20px; letter-spacing:-0.01em;
+  }
+  .about-text{ max-width: 680px; color: var(--ink-soft); font-size: 1.02rem; }
+
+  /* ---------- Services: three distinct media treatments ---------- */
+  .services-grid{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 28px;
+  }
+  @media (max-width: 800px){ .services-grid{ grid-template-columns: 1fr; } }
+
+  .service-card{
+    background: var(--paper); border: 1px solid var(--line); border-radius: 6px;
+    overflow:hidden; display:flex; flex-direction:column;
+  }
+  .service-visual{ height: 96px; position:relative; border-bottom: 1px solid var(--line); }
+  .service-body{ padding: 20px 20px 24px; flex:1; display:flex; flex-direction:column; }
+  .service-name{ font-family:'Space Grotesk', sans-serif; font-weight:600; font-size:1.08rem; margin-bottom:8px; }
+  .service-desc{ color: var(--ink-soft); font-size: 0.92rem; flex:1; }
+
+  /* Data entry: spreadsheet grid */
+  .visual-sheet{
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-color: #FDFDFB;
+  }
+  .visual-sheet::after{
+    content:"";
+    position:absolute; top:24px; left:24px; width:24px; height:24px;
+    background: rgba(42,111,119,0.18); border: 1px solid var(--teal);
+  }
+
+  /* Video editing: timeline scrubber */
+  .visual-timeline{ background: #1F2937; }
+  .visual-timeline .track{
+    position:absolute; left:14px; right:14px; top:38px; height:20px;
+    background: repeating-linear-gradient(90deg, #3a4453 0 3px, #2b3341 3px 12px);
+    border-radius: 3px;
+  }
+  .visual-timeline .playhead{
+    position:absolute; top:20px; left:38%; width:2px; height:56px; background: var(--amber);
+  }
+  .visual-timeline .playhead::before{
+    content:""; position:absolute; top:-6px; left:-4px; width:10px; height:10px;
+    background: var(--amber); border-radius: 2px;
+  }
+
+  /* Content writing: manuscript lines */
+  .visual-manuscript{ background: #FDFDFB; padding: 18px 22px; }
+  .visual-manuscript .line{ height: 2px; background: var(--line); margin-bottom: 10px; border-radius:1px; }
+  .visual-manuscript .line:nth-child(1){ width: 88%; }
+  .visual-manuscript .line:nth-child(2){ width: 62%; }
+  .visual-manuscript .line:nth-child(3){ width: 74%; background: var(--amber); position:relative; }
+  .visual-manuscript .line:nth-child(3)::after{
+    content:""; position:absolute; right:-4px; top:-6px; width:2px; height:14px;
+    background: var(--ink); animation: blink 1.1s steps(1) infinite;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+  @media (prefers-reduced-motion: reduce){
+    .visual-manuscript .line:nth-child(3)::after{ animation:none; }
+  }
+
+  /* ---------- Contact ---------- */
+  .contact-ticket{
+    background: var(--paper); border:1px solid var(--line); border-radius:6px;
+    padding: 34px 28px; margin-top: 24px;
+    display:grid; grid-template-columns: 1fr 1fr; gap: 22px;
+  }
+  @media (max-width: 700px){ .contact-ticket{ grid-template-columns: 1fr; } }
+  .contact-item{
+    display:flex; flex-direction:column; gap:4px;
+    border-left: 2px solid var(--teal); padding-left: 14px;
+  }
+  .contact-label{
+    font-family:'IBM Plex Mono', monospace; font-size:0.7rem;
+    text-transform:uppercase; letter-spacing:0.1em; color: var(--ink-soft);
+  }
+  .contact-value{ font-weight:600; word-break: break-word; }
+  .contact-value a{ text-decoration:none; }
+  .contact-value a:hover{ color: var(--teal); }
+
+  footer{
+    border-top: 1px solid var(--line);
+    padding: 24px 0; margin-top: 20px;
+    font-family:'IBM Plex Mono', monospace; font-size: 0.75rem; color: var(--ink-soft);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <div class="brand">Sohanur Rahman</div>
+    <div class="status-stamp"><span class="status-dot"></span>Available for hire</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="ticket">
+      <div class="ticket-head">
+        <span>Work Order</span>
+        <span>No. 001</span>
+      </div>
+      <div class="ticket-body">
+        <div class="field-row"><b>Client:</b> You</div>
+        <div class="field-row"><b>Assigned to:</b> Sohanur Rahman</div>
+        <h1>Freelance work,<br><em>done properly.</em></h1>
+        <p class="hero-sub">অনেক দিন ধরে ফ্রিল্যান্সিং করছি — Data Entry, Video Editing আর Content Writing, তিন জায়গাতেই নির্ভরযোগ্য ও মানসম্পন্ন কাজ দেওয়াই আমার লক্ষ্য।</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#contact">যোগাযোগ করুন</a>
+          <a class="btn btn-ghost" href="#services">সার্ভিস দেখুন</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-label">// About</div>
+    <h2 class="section-title">পরিচিতি</h2>
+    <p class="about-text">আমি Sohanur Rahman, দীর্ঘদিন ধরে ফ্রিল্যান্সিং করছি এবং এই কাজে যথেষ্ট পারদর্শী। ডেডলাইন ধরে, ডিটেইলে মনোযোগ দিয়ে কাজ ডেলিভারি করাটাই আমার কাজের ধরন — সেটা হাজার সারির স্প্রেডশিট হোক, ভিডিওর সূক্ষ্ম কাট হোক, বা একটা লেখার সঠিক টোন।</p>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-label">// Services</div>
+    <h2 class="section-title">যা যা কাজ করি</h2>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-visual visual-sheet"></div>
+        <div class="service-body">
+          <div class="service-name">Data Entry</div>
+          <p class="service-desc">নির্ভুল ও দ্রুত ডেটা এন্ট্রি, স্প্রেডশিট তৈরি ও ক্লিনআপ, ডেটা অর্গানাইজেশন — বড় পরিমাণ তথ্য গুছিয়ে কাজের যোগ্য করে তোলা।</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-visual visual-timeline">
+          <div class="track"></div>
+          <div class="playhead"></div>
+        </div>
+        <div class="service-body">
+          <div class="service-name">Video Editing</div>
+          <p class="service-desc">কাট, ট্রানজিশন, কালার আর সাউন্ড ব্যালেন্স — কাঁচা ফুটেজকে পরিষ্কার, দেখার-উপযোগী একটা গল্পে রূপ দেওয়া।</p>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-visual visual-manuscript">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </div>
+        <div class="service-body">
+          <div class="service-name">Content Writing</div>
+          <p class="service-desc">ব্লগ, ওয়েবসাইট কপি, প্রোডাক্ট ডিস্ক্রিপশন — পাঠকের জন্য স্পষ্ট, সহজবোধ্য ও উদ্দেশ্যপূর্ণ লেখা।</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-label">// Contact</div>
+    <h2 class="section-title">যোগাযোগ করুন</h2>
+    <div class="contact-ticket">
+      <div class="contact-item">
+        <span class="contact-label">Email</span>
+        <span class="contact-value"><a href="mailto:sohanur.biz.prof@gmail.com">sohanur.biz.prof@gmail.com</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Phone</span>
+        <span class="contact-value"><a href="tel:+8801640367091">01640367091</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">LinkedIn</span>
+        <span class="contact-value"><a href="https://www.linkedin.com/in/sohanur-rahman-sohan-9930ab2aa/" target="_blank" rel="noopener">Sohanur Rahman Sohan</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">Status</span>
+        <span class="contact-value">নতুন কাজের জন্য উন্মুক্ত</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:8px;">
+    <span>© 2026 Sohanur Rahman</span>
+    <span class="mono">Data Entry · Video Editing · Content Writing</span>
+  </div>
+</footer>
+
+</body>
+</html>
