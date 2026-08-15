@@ -82,7 +82,49 @@
     font-family:'IBM Plex Mono', monospace;
     color: #F4F2EC; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
   }
-  .ticket-body{ padding: 40px 26px 34px; }
+  .ticket-body{ padding: 40px 26px 34px; position: relative; }
+
+  /* ---------- Attached photo (ID-badge style) ---------- */
+  .photo-frame{
+    position: absolute;
+    top: -18px; right: 34px;
+    width: 128px; height: 128px;
+    background: #fff;
+    padding: 6px 6px 18px 6px;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    box-shadow: 0 14px 26px -14px var(--shadow);
+    transform: rotate(3deg);
+    z-index: 5;
+  }
+  .photo-frame img{
+    width: 100%; height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+    display: block;
+  }
+  .photo-pin{
+    position: absolute; top: -9px; left: 50%; transform: translateX(-50%) rotate(-8deg);
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--amber);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+    z-index: 6;
+  }
+  .photo-pin::after{
+    content:""; position:absolute; top:6px; left:6px; width:8px; height:8px;
+    border-radius:50%; background: rgba(255,255,255,0.55);
+  }
+  .photo-caption{
+    position:absolute; bottom: 4px; left: 0; right: 0; text-align:center;
+    font-family:'IBM Plex Mono', monospace; font-size: 0.5rem;
+    letter-spacing: 0.06em; color: var(--ink-soft); text-transform: uppercase;
+  }
+  @media (max-width: 620px){
+    .photo-frame{ position: static; margin: 0 auto 22px; transform: rotate(0deg); }
+  }
+  @media (min-width: 621px){
+    .ticket-body{ padding-right: 190px; }
+  }
   .field-row{
     display:flex; gap: 10px; align-items:baseline;
     font-family:'IBM Plex Mono', monospace; font-size: 0.78rem;
@@ -233,6 +275,11 @@
         <span>No. 001</span>
       </div>
       <div class="ticket-body">
+        <div class="photo-frame">
+          <span class="photo-pin"></span>
+          <img src="sohanur-photo.jpg" alt="Sohanur Rahman">
+          <span class="photo-caption">S. Rahman</span>
+        </div>
         <div class="field-row"><b>Client:</b> You</div>
         <div class="field-row"><b>Assigned to:</b> Sohanur Rahman</div>
         <h1>Freelance work,<br><em>done properly.</em></h1>
